@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Content, Text, View } from 'native-base';
+import { Button, Container, Content, Text, View } from 'native-base';
 import { Animated, Easing } from 'react-native';
 
 class AnimationTiming extends React.Component{
@@ -13,6 +13,9 @@ class AnimationTiming extends React.Component{
 		this._animateY = new Animated.Value(0);
 	}
 	componentWillMount(){
+		this.animationGo();
+	}
+	animationGo = () => {
 		Animated.timing(this._animateOpacity, {
 			toValue: 1,
 			duration: 1000,
@@ -28,6 +31,22 @@ class AnimationTiming extends React.Component{
 			duration: 1000,
 		}).start();
 	}
+	animationReset = () => {
+		Animated.timing(this._animateOpacity, {
+			toValue: 0,
+			duration: 1000,
+		}).start();
+		Animated.timing(this._animateX, {
+			toValue: -125,
+			easing: Easing.bounce,
+			duration: 1000,
+		}).start();
+		Animated.timing(this._animateY, {
+			toValue: 0,
+			easing: Easing.elastic(2),
+			duration: 1000,
+		}).start(this.animationGo);
+	}
 	render(){
 		const animationOpacity = { opacity: this._animateOpacity };
 		const animateX = { transform: [{translateX: this._animateX }]};
@@ -37,6 +56,9 @@ class AnimationTiming extends React.Component{
 		return(
 			<Container>
 				<Content contentContainerStyle={container}>
+					<Button light style={{ alignSelf: 'center' }} onPress={this.animationReset}>
+						<Text>Click me !</Text>
+					</Button>
 					<Animated.View style={[ball, backgroundRed, animationOpacity]}/>
 					<Animated.View style={[ball, backgroundBlue, animateX]}/>
 					<Animated.View style={[ball, backgroundGreen, animateY]}/>

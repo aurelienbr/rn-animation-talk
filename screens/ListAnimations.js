@@ -18,20 +18,17 @@ class ListAnimations extends Component{
 						<ListItem button onPress={() => navigate('AnimationSpring')}>
 							<Text>Animation.spring</Text>
 						</ListItem>
-						<ListItem button onPress={() => console.log()}>
+						<ListItem button onPress={() => navigate('AnimationDecay')}>
 							<Text>Animation.decay</Text>
 						</ListItem>
-						<ListItem button onPress={() => console.log()}>
+						<ListItem button onPress={() => navigate('AnimationSequence')}>
 							<Text>Animation.sequence</Text>
 						</ListItem>
-						<ListItem button onPress={() => console.log()}>
+						<ListItem button onPress={() => navigate('AnimationParallel')}>
 							<Text>Animation.parallel</Text>
 						</ListItem>
-						<ListItem button onPress={() => console.log()}>
+						<ListItem button onPress={() => navigate('AnimationStagger')}>
 							<Text>Animation.stagger</Text>
-						</ListItem>
-						<ListItem button onPress={() => console.log()}>
-							<Text>Animation.delay</Text>
 						</ListItem>
 					</List>
 				</Content>
